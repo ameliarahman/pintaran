@@ -5,4 +5,10 @@
   "expoServerNgrokUrl": "https://kq-rbq.ameliarahman.client.exp.direct",
   "packagerNgrokUrl": "https://packager.kq-rbq.ameliarahman.client.exp.direct",
   "ngrokPid": 24332
+  "expoServerPort2": 19001,
+  "packagerPort2": 19002,
+  "packagerPid2": 13511,
+  "expoServerNgrokUrl2": "https://6e-mrs.harynp.client.exp.direct",
+  "packagerNgrokUrl2": "https://packager.6e-mrs.harynp.client.exp.direct",
+  "ngrokPid2": 13575
 }

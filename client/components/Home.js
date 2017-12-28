@@ -10,6 +10,7 @@ export default class Home extends React.Component {
 
   }
   render() {
+    const {navigate} = this.props.navigation
     return (
       <View style={styles.container}>
         <View style={styles.boardRow} >
@@ -43,6 +44,9 @@ export default class Home extends React.Component {
         <View style={styles.btn}>
           <Button title="Submit" onPress={this.handleOnPress} />
         </View>
+
+        <Text>Home...</Text>
+        <Button title="+Add" onPress={() => navigate('Profile')}></Button>
       </View>
     );
   }
