@@ -7,7 +7,7 @@ export default class Login extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
-          Selamat Datang di Pintaran
+          Selamat Datang di Pinteran
       </Text>
         <Image style={styles.image} source={require('../assets/pinterest.png')} />
         <View style={styles.fb}>
