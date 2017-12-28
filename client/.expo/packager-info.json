@@ -1,8 +1,8 @@
 {
-  "expoServerPort": null,
-  "packagerPort": 19001,
-  "packagerPid": 9791,
-  "expoServerNgrokUrl": "https://6g-xcx.ameliarahman.client.exp.direct",
-  "packagerNgrokUrl": "https://packager.6g-xcx.ameliarahman.client.exp.direct",
-  "ngrokPid": 9838
+  "expoServerPort": 19000,
+  "packagerPort": 19002,
+  "packagerPid": 24245,
+  "expoServerNgrokUrl": "https://kq-rbq.ameliarahman.client.exp.direct",
+  "packagerNgrokUrl": "https://packager.kq-rbq.ameliarahman.client.exp.direct",
+  "ngrokPid": 24332
 }
