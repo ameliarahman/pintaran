@@ -1,14 +1,22 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import {
+  StackNavigator
+} from 'react-navigation'
+import Login from './components/Login';
+import Home from './components/Home';
+import Profile from './components/Profile';
+
+const NavigationBase = StackNavigator({
+  Login: { screen: Login },
+  Home: { screen: Home },
+  Profile: { screen: Profile }
+})
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+      <NavigationBase />
     );
   }
 }
