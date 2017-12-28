@@ -1,11 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, ListView } from 'react-native';
+import { StyleSheet, Text, View, ListView, Button } from 'react-native';
 
 export default class Home extends React.Component {
   render() {
+    const {navigate} = this.props.navigation
     return (
       <View style={styles.container}>
         <Text>Home...</Text>
+        <Button title="+Add" onPress={() => navigate('Profile')}></Button>
       </View>
     );
   }
