@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import {
   StackNavigator
 } from 'react-navigation'
+import store from './store'
+import { Provider } from 'react-redux'
 import Login from './components/Login';
 import Home from './components/Home';
 import Profile from './components/Profile';
@@ -11,14 +13,16 @@ import HomeFeed from './components/HomeFeed';
 const NavigationBase = StackNavigator({
   Login: { screen: Login },
   Home: { screen: Home },
-  HomeFeed: {screen: HomeFeed},
+  HomeFeed: { screen: HomeFeed },
   Profile: { screen: Profile }
 })
 
 export default class App extends React.Component {
   render() {
     return (
-      <NavigationBase />
+      <Provider store={store}>
+        <NavigationBase />
+      </Provider>
     );
   }
 }
