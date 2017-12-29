@@ -56,6 +56,7 @@ class PinterestController {
   }
 
   static postPintaran (req,res) {
+    console.log(req.file, req.body)
     Pintaran.create({
       images: req.file.cloudStoragePublicUrl,
       urlImg: req.body.urlImg,
