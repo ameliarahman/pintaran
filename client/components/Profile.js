@@ -50,7 +50,8 @@ export default class Profile extends React.Component {
         'Content-Type': 'multipart/form-data'
       }
     };
-    axios.post('http://192.168.1.102:3000/pintaran', data, config)
+
+    axios.post('http://192.168.100.52:3000/pintaran', data, config)
       .then(data => {
         console.log("masuk data kah....", data)
       })
