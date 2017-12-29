@@ -21,7 +21,7 @@ const sendUploadToGCS = (req, res, next) => {
     return next()
   }
 
-const GoogleCloudService = Date.now() + req.file.originalname
+const GoogleCloudService = req.file.originalname
 const file = bucket.file('images/'+GoogleCloudService)
 
 const stream = file.createWriteStream({
