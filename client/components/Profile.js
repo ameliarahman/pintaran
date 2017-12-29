@@ -32,10 +32,10 @@ export default class Profile extends React.Component {
 
   postAll() {
     console.log(this.state.photos.node.image.uri)
-    console.log(this.state.description + "------------" + this.state.photos + '+++++++++++' + this.state.category);
+    console.log(this.state.description + "------------" + JSON.stringify(this.state.photos.node.image.filename) + '+++++++++++' + this.state.category);
 
-    axios.post('https://localhost:3000/pintaran', {
-      images: this.state.photos.node.image.uri,
+    axios.post('http://localhost:3000/pintaran', {
+      images: this.state.photos.node.image.filename,
       description: this.state.description,
       category: this.state.category
     })
