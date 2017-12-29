@@ -42,7 +42,7 @@ export default class Home extends React.Component {
           </TouchableOpacity>
         </View>
         <View style={styles.btn}>
-          <Button title="Submit" onPress={this.handleOnPress} />
+          <Button title="Submit" onPress={() => navigate('HomeFeed')} />
         </View>
 
         <Text>Home...</Text>
