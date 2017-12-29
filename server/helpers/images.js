@@ -10,11 +10,13 @@ const storage = Storage({
 const bucket = storage.bucket(BUCKET_NAME);
 
 urlProjectStorage = (filename) => {
+  console.log(filename, 'filename..........')
   return `https://storage.googleapis.com/${BUCKET_NAME}/images/${filename}`
 }
 
 
 const sendUploadToGCS = (req, res, next) => {
+  console.log(req.file, "ini cek req.file")
   if (!req.file) {
     return next()
   }

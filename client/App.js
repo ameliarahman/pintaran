@@ -6,10 +6,12 @@ import {
 import Login from './components/Login';
 import Home from './components/Home';
 import Profile from './components/Profile';
+import HomeFeed from './components/HomeFeed';
 
 const NavigationBase = StackNavigator({
   Login: { screen: Login },
   Home: { screen: Home },
+  HomeFeed: {screen: HomeFeed},
   Profile: { screen: Profile }
 })
 
