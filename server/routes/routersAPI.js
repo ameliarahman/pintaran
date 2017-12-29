@@ -9,9 +9,7 @@ router.get('/sport', API.getSport)
 router.get('/humor', API.getHumor)
 router.get('/photography', API.getPhotography)
 router.get('/technology', API.getTechnology)
-router.post('/', IMG.multer.single('images'), IMG.sendUploadToGCS, function(req, res){
-  console.log("masukkk sini ngga yaaaa...")
-})
+router.post('/', IMG.multer.single('images'), IMG.sendUploadToGCS, API.postPintaran)
 
 router.delete('/:id', API.deletePintaran)
 module.exports = router

@@ -31,14 +31,25 @@ export default class Profile extends React.Component {
   }
 
   postAll() {
-    console.log(this.state.photos.node.image.uri)
-    console.log(this.state.description + "------------" + this.state.photos + '+++++++++++' + this.state.category);
-
-    axios.post('https://localhost:3000/pintaran', {
-      images: this.state.photos.node.image.uri,
-      description: this.state.description,
-      category: this.state.category
+    // console.log(this.state.photos.node.image.uri)
+    // console.log(this.state.description + "------------" + this.state.photos + '+++++++++++' + this.state.category);
+    const data = new FormData()
+    data.append('description', this.state.description)
+    data.append('category', this.state.category)
+    data.append('images', {
+      uri: this.state.photos.node.image.uri,
+      type: this.state.photos.node.type,
+      name: "picture" + Math.random()
     })
+
+    const config = {
+      method: 'POST',
+      body: data,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    };
+    axios.post('http://192.168.100.52:3000/pintaran', config)
       .then(data => {
         console.log("masuk data kah....", data)
       })
