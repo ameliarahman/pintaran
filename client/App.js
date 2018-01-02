@@ -9,9 +9,11 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import HomeFeed from './components/HomeFeed';
+import LoginForm from './components/LoginForm';
 
 const NavigationBase = StackNavigator({
   Login: { screen: Login },
+  LoginForm: {screen: LoginForm},
   Home: { screen: Home },
   HomeFeed: { screen: HomeFeed },
   Profile: { screen: Profile }
@@ -31,7 +33,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
+  alignItems: 'center',
     justifyContent: 'center',
   },
 });

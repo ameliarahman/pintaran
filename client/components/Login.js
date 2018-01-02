@@ -11,13 +11,11 @@ export default class Login extends React.Component {
         <Text style={styles.title}>
           Selamat Datang di Pintaran
       </Text>
-      <LoginForm />
+      <LoginForm navigate={navigate}/>
         <View style={styles.fb}>
           <Button title="Continue with Facebook" onPress={() => navigate('Home')} />
         </View>
-        <View style={styles.fb}>
-          <Button color="#a80303" title="Continue" onPress={() => navigate('Home')} />
-        </View>
+       
       </KeyboardAvoidingView>
     );
   }
@@ -31,8 +29,8 @@ const styles = StyleSheet.create({
     paddingTop: 100
   },
   image: {
-    height: 200,
-    width: 200
+    height: 170,
+    width: 170
   },
   title: {
     fontSize: 20,
@@ -41,6 +39,6 @@ const styles = StyleSheet.create({
   },
   fb:{
     width: 340,
-    marginBottom: 20
+    marginBottom: 25
   }
 });
