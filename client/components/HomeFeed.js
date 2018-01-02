@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ListView, Image, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Text, View, ListView, Image, ScrollView, TouchableOpacity, Button } from 'react-native';
 import { connect } from 'react-redux'
 import { fetchAllPostData } from '../actions/postAction'
 
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProp = (state) => {
+  console.log("ini data di state....",state)
   return {
     posts : state.postReducer.posts
   }
