@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 const getAllPostData = (data) => {
+  console.log(data)
   const payload = data
   return {
     type: 'get_post',
@@ -11,8 +12,9 @@ const getAllPostData = (data) => {
 export const fetchAllPostData = () => {
   console.log("=================================== haihaiahai")
   return (dispatch) => {
-    axios.get(`http://192.168.100.52:3000/pintaran`)
+    axios.get(`http://192.168.1.14:3000/pintaran`)
       .then((dataPost) => {
+        console.log(dataPost.data)
         dispatch(getAllPostData(dataPost.data))
       })
       .catch((reason) => {
