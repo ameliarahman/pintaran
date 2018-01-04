@@ -36,7 +36,7 @@ export default class Profile extends React.Component {
     var foto = {
         uri: this.state.photos.node.image.uri,
         type: this.state.photos.node.type,
-        name: this.state.photos.node.image.filename
+        name: Math.random() + `images`
     }
     const data = new FormData()
     data.append('description', this.state.description)
@@ -51,7 +51,7 @@ export default class Profile extends React.Component {
       }
     };
 
-    axios.post('http://192.168.100.52:3000/pintaran', data, config)
+    axios.post('http://192.168.1.101:3000/pintaran', data, config)
       .then(data => {
         console.log("masuk data kah....", data)
       })

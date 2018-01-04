@@ -1,12 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Button, TouchableOpacity, Dimensions, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, TouchableOpacity, ScrollView, Dimensions, KeyboardAvoidingView } from 'react-native';
 import LoginForm from './LoginForm'
 
 export default class Login extends React.Component {
   render() {
     const { navigate } = this.props.navigation
     return (
-      <KeyboardAvoidingView style={styles.container} behavior="padding" >
+      <ScrollView >
+        <View style={styles.container} behavior="padding">
         <Image style={styles.image} source={require('../assets/pinterest.png')} />
         <Text style={styles.title}>
           Selamat Datang di Pintaran
@@ -15,8 +16,8 @@ export default class Login extends React.Component {
         <View style={styles.fb}>
           <Button title="Continue with Facebook" onPress={() => navigate('Home')} />
         </View>
-       
-      </KeyboardAvoidingView>
+       </View>
+      </ScrollView>
     );
   }
 }
