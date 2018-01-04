@@ -10,11 +10,21 @@ const getAllPostData = (data) => {
 }
 
 export const fetchAllPostData = () => {
-  console.log("=================================== haihaiahai")
   return (dispatch) => {
-    axios.get(`http://192.168.1.14:3000/pintaran`)
+    axios.get(`http://192.168.1.101:3000/pintaran`)
       .then((dataPost) => {
-        console.log(dataPost.data)
+        dispatch(getAllPostData(dataPost.data))
+      })
+      .catch((reason) => {
+        console.log(reason)
+      })
+  }
+}
+
+export const fetchDataByCategory = (category) => {
+  return (dispatch) => {
+    axios.get(`http://192.168.1.101:3000/pintaran/${category}`)
+      .then((dataPost) => {
         dispatch(getAllPostData(dataPost.data))
       })
       .catch((reason) => {
