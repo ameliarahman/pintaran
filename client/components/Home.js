@@ -1,26 +1,26 @@
 import React from 'react';
 import { StyleSheet, Text, View, ListView, Image, TouchableOpacity, Button } from 'react-native';
+import { connect } from 'react-redux'
+import { fetchDataByCategory } from '../actions/postAction'
 
-export default class Home extends React.Component {
-  constructor(){
-    super()
-    
-  }
-  handleOnPress(){
+class Home extends React.Component {
 
+  handleOnPress(category) {
+  this.props.fetchData(category)
+  this.props.navigation.navigate('FeedCategory')
   }
   render() {
-    const {navigate} = this.props.navigation
+    const { navigate } = this.props.navigation
     return (
       <View style={styles.container}>
         <View style={styles.boardRow} >
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => this.handleOnPress("technology")} >
             <Text style={styles.title}>
               Technology
             </Text>
             <Image style={styles.img} source={require('../assets/technology.png')} />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => this.handleOnPress("photography")}>
             <Text style={styles.title}>
               Photograph
             </Text>
@@ -28,13 +28,13 @@ export default class Home extends React.Component {
           </TouchableOpacity>
         </View>
         <View style={styles.boardRow}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => this.handleOnPress("sport")}>
             <Text style={styles.title}>
               Sport
             </Text>
             <Image style={styles.img} source={require('../assets/sport.jpeg')} />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => this.handleOnPress("humor")}>
             <Text style={styles.title}>
               Humor
             </Text>
@@ -42,7 +42,7 @@ export default class Home extends React.Component {
           </TouchableOpacity>
         </View>
         <View style={styles.btn}>
-          <Button title="Submit" onPress={() => navigate('HomeFeed')} />
+          <Button title="All Data" onPress={() => navigate('HomeFeed')} />
         </View>
 
         <Text>Home...</Text>
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 300
   },
-  btn:{
+  btn: {
     marginBottom: 40
   },
   title: {
@@ -75,3 +75,13 @@ const styles = StyleSheet.create({
     width: 150
   }
 });
+
+
+
+const mapActionToProp = (dispatch) => {
+  return {
+    fetchData: (category) => dispatch(fetchDataByCategory(category))
+  }
+}
+
+export default connect(null, mapActionToProp)(Home)

@@ -16,7 +16,6 @@ urlProjectStorage = (filename) => {
 
 
 const sendUploadToGCS = (req, res, next) => {
-  console.log(req.file, "ini cek req.file")
   if (!req.file) {
     return next()
   }
