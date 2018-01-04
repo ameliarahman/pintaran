@@ -86,7 +86,7 @@ export default class Profile extends React.Component {
 
         <View>
           <Text> Your Gallery Phone : </Text>
-          <View style={{flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-around'}}>
+          <View style={styles.grid}>
           {
             this.state.photos.length > 1 &&
             this.state.photos.map((d, index) => {
@@ -94,7 +94,7 @@ export default class Profile extends React.Component {
                   <TouchableOpacity key={index} onPress={() => this.postPhoto(d)} >
                     <Image
                       source={{ uri: d.node.image.uri }}
-                      style={styles.test2}
+                      style={styles.images}
                     />
                   </TouchableOpacity>
               )
@@ -133,11 +133,17 @@ const styles = StyleSheet.create({
     width: 200,
     borderRadius: 5
   },
- test2 : {
-  height: 98,
-  width: 95,
-  flexBasis: 150,
-  marginBottom: 10,
-  borderWidth: 2
- }
+   images : {
+    height: 98,
+    width: 95,
+    flexBasis: 150,
+    marginBottom: 10,
+    borderWidth: 2
+  },
+  grid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  }
 });
