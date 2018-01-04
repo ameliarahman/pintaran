@@ -14,7 +14,7 @@ export default class Profile extends React.Component {
 
   _handleButtonPress() {
     CameraRoll.getPhotos({
-      first: 20,
+      first: 21,
       assetType: 'All',
     })
       .then(r => {
@@ -86,21 +86,21 @@ export default class Profile extends React.Component {
 
         <View>
           <Text> Your Gallery Phone : </Text>
+          <View style={{flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-around'}}>
           {
             this.state.photos.length > 1 &&
             this.state.photos.map((d, index) => {
               return (
-                <TouchableOpacity key={index} onPress={() => this.postPhoto(d)} >
-
-                  <Image
-
-                    style={styles.image}
-                    source={{ uri: d.node.image.uri }}
-                  />
-                </TouchableOpacity>
+                  <TouchableOpacity key={index} onPress={() => this.postPhoto(d)} >
+                    <Image
+                      source={{ uri: d.node.image.uri }}
+                      style={styles.test2}
+                    />
+                  </TouchableOpacity>
               )
             })
           }
+          </View>
         </View>
 
       </ScrollView>
@@ -133,9 +133,11 @@ const styles = StyleSheet.create({
     width: 200,
     borderRadius: 5
   },
-  image: {
-    flexDirection: 'row',
-    height: 100,
-    width: 100
-  }
+ test2 : {
+  height: 98,
+  width: 95,
+  flexBasis: 150,
+  marginBottom: 10,
+  borderWidth: 2
+ }
 });
