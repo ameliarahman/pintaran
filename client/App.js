@@ -11,6 +11,7 @@ import Profile from './components/Profile';
 import HomeFeed from './components/HomeFeed';
 import LoginForm from './components/LoginForm';
 import FeedCategory from './components/FeedCategory';
+import UserProfile from './components/UserProfile';
 
 const NavigationBase = StackNavigator({
   Login: { screen: Login },
@@ -18,6 +19,7 @@ const NavigationBase = StackNavigator({
   Home: { screen: Home },
   FeedCategory: {screen: FeedCategory},
   HomeFeed: { screen: HomeFeed },
+  UserProfile: {screen: UserProfile},
   Profile: { screen: Profile }
 })
 

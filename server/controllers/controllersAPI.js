@@ -19,7 +19,6 @@ class PinterestController {
 
   static check (req,res,next) {
     client.get('listfoto', function (err, data) {
-      console.log('MASUK CHECK DATA', data);
       if (err) throw err;
       if (data != null) {
           res.send(JSON.parse(data));
@@ -33,7 +32,6 @@ class PinterestController {
     Pintaran.find({category: 'Sport'})
     .then(data => {
       res.status(200).send(data)
-      getAPIRedis()
     })
     .catch(err => {
       res.status(500).send(err)
@@ -44,7 +42,6 @@ class PinterestController {
     Pintaran.find({category: 'Humor'})
     .then(data => {
       res.status(200).send(data)
-      getAPIRedis()
     })
     .catch(err => {
       res.status(500).send(err)
@@ -55,7 +52,6 @@ class PinterestController {
     Pintaran.find({category: 'Technology'})
     .then(data => {
       res.status(200).send(data)
-      getAPIRedis()
     })
     .catch(err => {
       res.status(500).send(err)
@@ -66,7 +62,6 @@ class PinterestController {
     Pintaran.find({category: 'Photography'})
     .then(data => {
       res.status(200).send(data)
-      getAPIRedis()
     })
     .catch(err => {
       res.status(500).send(err)
@@ -146,7 +141,7 @@ class PinterestController {
       .catch(err => {
         res.status(500).send(err)
       })
-    })
+
     .catch(err => {
       res.status(500).send(err)
     })
