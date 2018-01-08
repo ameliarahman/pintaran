@@ -13,7 +13,6 @@ class Home extends React.Component {
   async getData() {
     try {
       let dataStorage = await AsyncStorage.getItem('dataEmail')
-      console.log(dataStorage, "Ini di async di Home....")
     } catch (error) {
       console.log(error)
     }

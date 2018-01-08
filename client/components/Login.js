@@ -15,7 +15,7 @@ export default class Login extends React.Component {
 
           <LoginForm navigate={navigate} />
           <View style={styles.fb}>
-            <Button title="Continue with Facebook" onPress={() => navigate('Home')} />
+            <Button title="Continue with Facebook" onPress={() => alert('Facebook Login')} />
           </View>
         </View>
       </ScrollView>

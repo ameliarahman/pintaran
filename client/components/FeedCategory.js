@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 class FeedCategory extends React.Component {
 
   getPost(post){
-    
+    this.props.navigation.navigate('FeedDetail', {post: post})
   }
   render() {
     return (
@@ -55,7 +55,6 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProp = (state) => {
-  console.log("state................", state)
   return {
     posts: state.postReducer.posts
   }

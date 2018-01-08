@@ -32,3 +32,16 @@ export const fetchDataByCategory = (category) => {
       })
   }
 }
+
+export const fetchDataByAuthor = (author) => {
+  console.log("data di action", author)
+  return (dispatch) => {
+    axios.get(`http://192.168.1.101:3000/pintaran/${author}`)
+      .then((dataPost) => {
+        dispatch(getAllPostData(dataPost.data))
+      })
+      .catch((reason) => {
+        console.log(reason)
+      })
+  }
+}

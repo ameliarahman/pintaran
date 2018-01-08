@@ -11,7 +11,7 @@ class HomeFeed extends React.Component {
   }
   
   getPost(post){
-    console.log(post)
+    this.props.navigation.navigate('FeedDetail', {post: post})
   }
   render() {
     return (
