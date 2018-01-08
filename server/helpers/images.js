@@ -10,7 +10,6 @@ const storage = Storage({
 const bucket = storage.bucket(BUCKET_NAME);
 
 urlProjectStorage = (filename) => {
-  console.log(filename, 'filename..........')
   return `https://storage.googleapis.com/${BUCKET_NAME}/images/${filename}`
 }
 

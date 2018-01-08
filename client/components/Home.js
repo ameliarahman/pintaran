@@ -1,17 +1,31 @@
 import React from 'react';
-import { StyleSheet, Text, View, ListView, Image, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Text, View, ListView, Image, TouchableOpacity, Button, AsyncStorage, Dimensions } from 'react-native';
 import { connect } from 'react-redux'
 import { fetchDataByCategory } from '../actions/postAction'
+import Navbar from './Navbar'
 
 class Home extends React.Component {
 
+  componentWillMount() {
+    this.getData()
+  }
+
+  async getData() {
+    try {
+      let dataStorage = await AsyncStorage.getItem('dataEmail')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   handleOnPress(category) {
-  this.props.fetchData(category)
-  this.props.navigation.navigate('FeedCategory')
+    this.props.fetchData(category)
+    this.props.navigation.navigate('FeedCategory')
   }
   render() {
     const { navigate } = this.props.navigation
     return (
+
       <View style={styles.container}>
         <View style={styles.boardRow} >
           <TouchableOpacity onPress={() => this.handleOnPress("technology")} >
@@ -42,33 +56,39 @@ class Home extends React.Component {
           </TouchableOpacity>
         </View>
         <View style={styles.btn}>
-          <Button title="All Data" onPress={() => navigate('HomeFeed')} />
+          <Button color='#a80303' title="All Categories" onPress={() => navigate('HomeFeed')} />
         </View>
-
-        <Text>Home...</Text>
-        <Button title="+Add" onPress={() => navigate('Profile')}></Button>
+        <View style={styles.navbar}>
+          <Navbar navigate= {navigate} />
+        </View>
       </View>
     );
   }
 }
 
+const fullWidth = Dimensions.get('window').width
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    width: fullWidth
+  },
+  navbar: {
+    width: fullWidth
   },
   boardRow: {
     flex: 1,
     flexDirection: 'row',
-    height: 300
+    height: 300,
   },
   btn: {
-    marginBottom: 40
+    marginTop: 10
   },
   title: {
-    textAlign: 'center'
+    textAlign: 'center',
+    fontSize: 15,
+    fontWeight: 'bold'
   },
   img: {
     height: 200,
@@ -77,6 +97,13 @@ const styles = StyleSheet.create({
 });
 
 
+const mapStateToProp = (state) => {
+
+  return {
+    email: state.userReducer.email,
+    token: state.userReducer.token
+  }
+}
 
 const mapActionToProp = (dispatch) => {
   return {
@@ -84,4 +111,4 @@ const mapActionToProp = (dispatch) => {
   }
 }
 
-export default connect(null, mapActionToProp)(Home)
+export default connect(mapStateToProp, mapActionToProp)(Home)

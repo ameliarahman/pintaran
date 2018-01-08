@@ -8,20 +8,21 @@ export default class Login extends React.Component {
     return (
       <ScrollView >
         <View style={styles.container} behavior="padding">
-        <Image style={styles.image} source={require('../assets/pinterest.png')} />
-        <Text style={styles.title}>
-          Selamat Datang di Pintaran
+          <Image style={styles.image} source={require('../assets/pinterest.png')} />
+          <Text style={styles.title}>
+            Selamat Datang di Pintaran
       </Text>
-      <LoginForm navigate={navigate}/>
-        <View style={styles.fb}>
-          <Button title="Continue with Facebook" onPress={() => navigate('Home')} />
+
+          <LoginForm navigate={navigate} />
+          <View style={styles.fb}>
+            <Button title="Continue with Facebook" onPress={() => alert('Facebook Login')} />
+          </View>
         </View>
-       </View>
       </ScrollView>
     );
   }
 }
-const fullWidth = Dimensions.get('window').width
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     color: 'black',
     fontWeight: 'bold'
   },
-  fb:{
+  fb: {
     width: 340,
     marginBottom: 25
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView, CameraRoll, Button, Image } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, AsyncStorage, View, ScrollView, Picker, CameraRoll, Button, Image } from 'react-native';
 import axios from 'axios'
 
 export default class Profile extends React.Component {
@@ -8,8 +8,17 @@ export default class Profile extends React.Component {
     this.state = {
       photos: [],
       description: '',
-      category: ''
+      category: '',
+      email: ''
     }
+  }
+
+  componentDidMount() {
+    AsyncStorage.getItem('dataEmail').then((value) => {
+      this.setState({
+        email: value
+      })
+    })
   }
 
   _handleButtonPress() {
@@ -31,16 +40,15 @@ export default class Profile extends React.Component {
   }
 
   postAll() {
-    console.log(this.state.photos.node.image)
-    console.log(this.state.description + "------------" + this.state.photos + '+++++++++++' + this.state.category);
     var foto = {
-        uri: this.state.photos.node.image.uri,
-        type: this.state.photos.node.type,
-        name: Math.random() + `images`
+      uri: this.state.photos.node.image.uri,
+      type: this.state.photos.node.type,
+      name: Math.random() + `images`
     }
     const data = new FormData()
     data.append('description', this.state.description)
     data.append('category', this.state.category)
+    data.append('author', this.state.email)
     data.append('images', foto)
 
     const config = {
@@ -65,7 +73,6 @@ export default class Profile extends React.Component {
       <ScrollView style={{ backgroundColor: 'white' }}>
         <View style={styles.container}>
           <Text>Form Upload Images</Text>
-
           <View style={{ flexDirection: 'row' }}>
             <Button style={styles.button} title="Upload Foto" onPress={() => this._handleButtonPress()}></Button>
           </View>
@@ -75,31 +82,38 @@ export default class Profile extends React.Component {
           </View>
 
           <View style={{ flexDirection: 'row' }}>
-            <TextInput onChangeText={(text) => this.setState({ category: text })} style={styles.input} placeholder="  Category . . . " />
+            <View style={styles.input}>
+              <Picker
+                selectedValue={this.state.category}
+                onValueChange={(itemValue, itemIndex) => this.setState({ category: itemValue })}>
+                <Picker.Item label="Technology" value="Technology" />
+                <Picker.Item label="Humor" value="Humor" />
+                <Picker.Item label="Sport" value="Sport" />
+                <Picker.Item label="Photography" value="Photography" />
+              </Picker>
+            </View>
           </View>
-
-          <TouchableOpacity>
-            <Text style={styles.button} onPress={() => this.postAll()}>Submit</Text>
-          </TouchableOpacity>
-
+          <View style={styles.button}>
+            <Button color="#a80303" title="Submit" onPress={() => this.postAll()} />
+          </View>
         </View>
 
         <View>
-          <Text> Your Gallery Phone : </Text>
+          <Text style={{ textAlign: "center", paddingTop: 20 }}> Your Phone Gallery : </Text>
           <View style={styles.grid}>
-          {
-            this.state.photos.length > 1 &&
-            this.state.photos.map((d, index) => {
-              return (
+            {
+              this.state.photos.length > 1 &&
+              this.state.photos.map((d, index) => {
+                return (
                   <TouchableOpacity key={index} onPress={() => this.postPhoto(d)} >
                     <Image
                       source={{ uri: d.node.image.uri }}
                       style={styles.images}
                     />
                   </TouchableOpacity>
-              )
-            })
-          }
+                )
+              })
+            }
           </View>
         </View>
 
@@ -123,17 +137,12 @@ const styles = StyleSheet.create({
     margin: 5
   },
   button: {
-    marginRight: 40,
-    marginLeft: 40,
-    marginTop: 5,
     paddingTop: 20,
     paddingBottom: 20,
-    backgroundColor: 'green',
-    textAlign: 'center',
     width: 200,
     borderRadius: 5
   },
-   images : {
+  images: {
     height: 98,
     width: 95,
     flexBasis: 150,
