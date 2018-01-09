@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19001,
-  "packagerPort": 19002,
-  "packagerPid": 486,
-  "expoServerNgrokUrl": "https://k3-5kt.harynp.client.exp.direct",
-  "packagerNgrokUrl": "https://packager.k3-5kt.harynp.client.exp.direct",
-  "ngrokPid": 628
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": "https://ic-x7j.harynp.client.exp.direct",
+  "packagerNgrokUrl": "https://packager.ic-x7j.harynp.client.exp.direct",
+  "ngrokPid": 7569
 }
