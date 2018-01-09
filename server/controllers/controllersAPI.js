@@ -11,6 +11,7 @@ const app = express()
 class PinterestController {
   static getPintaran(req, res) {
     Pintaran.find({})
+<<<<<<< HEAD
     .then(data => {
       client.get('versibaru', function (err,dataVersion) {
         if (err) {
@@ -36,9 +37,18 @@ class PinterestController {
     .catch(err => {
       res.status(500).send(err)
     })
+=======
+      .then(data => {
+        client.setex('listfoto', 30, JSON.stringify(data))
+        res.status(200).send(data)
+      })
+      .catch(err => {
+        res.status(500).send(err)
+      })
+>>>>>>> 7222c401d6ffd1e657c9efcdd14f540ea35306b0
   }
 
-  static check (req,res,next) {
+  static check(req, res, next) {
     client.get('listfoto', function (err, data) {
       if (err) throw err;
       if (data != null) {
@@ -49,6 +59,7 @@ class PinterestController {
     });
   }
 
+<<<<<<< HEAD
   static version(req,res,next) {
     Version.findOne({})
     .then(version => {
@@ -69,39 +80,46 @@ class PinterestController {
     .catch(err => {
       res.status(500).send(err)
     })
+=======
+  static getSport(req, res) {
+    Pintaran.find({ category: 'Sport' })
+      .then(data => {
+        res.status(200).send(data)
+      })
+      .catch(err => {
+        res.status(500).send(err)
+      })
+>>>>>>> 7222c401d6ffd1e657c9efcdd14f540ea35306b0
   }
 
-  static getHumor (req,res) {
-    Pintaran.find({category: 'Humor'})
-    .then(data => {
-      res.status(200).send(data)
-      getAPIRedis()
-    })
-    .catch(err => {
-      res.status(500).send(err)
-    })
+  static getHumor(req, res) {
+    Pintaran.find({ category: 'Humor' })
+      .then(data => {
+        res.status(200).send(data)
+      })
+      .catch(err => {
+        res.status(500).send(err)
+      })
   }
 
-  static getTechnology (req,res) {
-    Pintaran.find({category: 'Technology'})
-    .then(data => {
-      res.status(200).send(data)
-      getAPIRedis()
-    })
-    .catch(err => {
-      res.status(500).send(err)
-    })
+  static getTechnology(req, res) {
+    Pintaran.find({ category: 'Technology' })
+      .then(data => {
+        res.status(200).send(data)
+      })
+      .catch(err => {
+        res.status(500).send(err)
+      })
   }
 
-  static getPhotography (req,res) {
-    Pintaran.find({category: 'Photography'})
-    .then(data => {
-      res.status(200).send(data)
-      getAPIRedis()
-    })
-    .catch(err => {
-      res.status(500).send(err)
-    })
+  static getPhotography(req, res) {
+    Pintaran.find({ category: 'Photography' })
+      .then(data => {
+        res.status(200).send(data)
+      })
+      .catch(err => {
+        res.status(500).send(err)
+      })
       .then(data => {
         res.status(200).send(data)
       })
@@ -147,6 +165,28 @@ class PinterestController {
       })
       .catch(err => {
         res.status(500).send(err)
+      })
+  }
+
+  static removePost(req, res) {
+    Pintaran.remove({
+      author: req.body.author
+    }).then((dataPost) => {
+      res.send(dataPost)
+    }).catch((reason) => {
+      res.send(reason)
+    })
+  }
+
+  static getPostByAuthor(req, res) {
+    Pintaran.find({
+      author: req.params.author
+    })
+      .then((dataPost) => {
+        res.send(dataPost)
+      })
+      .catch((reason) => {
+        res.send(reason)
       })
   }
 
@@ -198,9 +238,16 @@ class PinterestController {
       .catch(err => {
         res.status(500).send(err)
       })
+<<<<<<< HEAD
     .catch(err => {
       res.status(500).send(err)
     })
+=======
+
+      .catch(err => {
+        res.status(500).send(err)
+      })
+>>>>>>> 7222c401d6ffd1e657c9efcdd14f540ea35306b0
   }
 }
 

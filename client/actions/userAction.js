@@ -11,7 +11,6 @@ export const signInUser = (email, password) => {
       password: password
     })
       .then((dataUser) => {
-        console.log(dataUser.data, "Ini sebelum dispatch...")
         dispatch(getDataUser(dataUser.data))
       })
       .catch((reason) => {
@@ -21,7 +20,7 @@ export const signInUser = (email, password) => {
 }
 
 const getDataUser = (dataUser) => {
-  let payload = dataUser
+  let payload = dataUser.data
   return {
     type: 'signin',
     payload

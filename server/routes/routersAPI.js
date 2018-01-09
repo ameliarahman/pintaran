@@ -11,6 +11,8 @@ router.get('/humor', API.getHumor)
 router.get('/photography', API.getPhotography)
 router.get('/technology', API.getTechnology)
 router.post('/', IMG.multer.single('images'), IMG.sendUploadToGCS, API.postPintaran)
+router.delete('/', API.removePost)
+router.get('/:author', API.getPostByAuthor)
 
 router.delete('/:id', API.deletePintaran)
 module.exports = router
